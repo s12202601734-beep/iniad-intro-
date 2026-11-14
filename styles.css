@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap');
+
+:root {
+  color-scheme: light;
+  --navy: #102a43;
+  --blue: #176b87;
+  --teal: #28a6a1;
+  --ink: #203449;
+  --muted: #64788b;
+  --paper: #f3f7fa;
+  --line: #e2ebf0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  line-height: 1.8;
+}
+
+.site-header {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(3.5rem, 9vw, 7rem) 1.5rem;
+  background: linear-gradient(120deg, #102a43 0%, #176b87 65%, #28a6a1 100%);
+  color: #fff;
+}
+
+.site-header::after {
+  position: absolute;
+  right: -5rem;
+  bottom: -12rem;
+  width: 28rem;
+  height: 28rem;
+  border: 1px solid rgb(255 255 255 / 18%);
+  border-radius: 50%;
+  box-shadow: 0 0 0 2rem rgb(255 255 255 / 5%), 0 0 0 4rem rgb(255 255 255 / 4%);
+  content: "";
+}
+
+.header-inner,
+.page-content {
+  width: min(100% - 2.5rem, 960px);
+  margin-inline: auto;
+}
+
+.header-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.eyebrow,
+.section-label {
+  margin: 0 0 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.eyebrow {
+  color: #c4f2eb;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 7vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1.25;
+}
+
+.header-copy {
+  margin: 1rem 0 0;
+  color: rgb(255 255 255 / 88%);
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+}
+
+.page-content {
+  padding-block: 3.5rem 5rem;
+}
+
+.section-card {
+  padding: clamp(1.5rem, 5vw, 2.75rem);
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 12px 32px rgb(16 42 67 / 6%);
+}
+
+.section-label {
+  color: var(--blue);
+}
+
+h2 {
+  margin: 0;
+  color: var(--navy);
+  font-size: clamp(1.45rem, 3vw, 1.9rem);
+  line-height: 1.4;
+}
+
+.intro > p:last-child {
+  max-width: 760px;
+  margin: 1rem 0 0;
+  color: var(--muted);
+}
+
+.courses {
+  margin-top: 3.5rem;
+}
+
+.section-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.section-note {
+  margin: 0 0 0.2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.course-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.course-list li {
+  position: relative;
+  min-height: 4.5rem;
+  display: flex;
+  align-items: center;
+  padding: 1rem 1.25rem 1rem 3.1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  background: #fff;
+  font-weight: 600;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.course-list li::before {
+  position: absolute;
+  left: 1.25rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 0.2rem;
+  background: linear-gradient(135deg, var(--blue), var(--teal));
+  content: "";
+  transform: rotate(45deg);
+}
+
+.course-list li:hover {
+  transform: translateY(-2px);
+  border-color: #9dcfd0;
+  box-shadow: 0 8px 20px rgb(16 42 67 / 8%);
+}
+
+.site-footer {
+  padding: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .header-inner,
+  .page-content {
+    width: min(100% - 2rem, 960px);
+  }
+
+  .page-content {
+    padding-block: 2rem 3rem;
+  }
+
+  .section-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .course-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
