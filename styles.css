@@ -1,29 +1,31 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600;700&display=swap');
 
 :root {
-  color-scheme: light;
-  --pink: #f5a7b8;
-  --peach: #ffc9a9;
-  --lavender: #bdb2e8;
-  --mint: #91d8c4;
-  --sky: #a9d7ed;
-  --ink: #66566d;
-  --muted: #88778e;
-  --paper: #fff8fa;
-  --line: #f1dde6;
+  color-scheme: dark;
+  --gold: #d6b36a;
+  --gold-light: #f0d99c;
+  --ink: #f5f1e8;
+  --muted: #b7b0a2;
+  --surface: #151513;
+  --surface-raised: #1d1c19;
+  --line: rgb(214 179 106 / 26%);
+  --page-width: 1000px;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
+  min-width: 320px;
   margin: 0;
   background:
-    radial-gradient(circle at 10% 15%, rgb(245 167 184 / 18%), transparent 22rem),
-    radial-gradient(circle at 90% 35%, rgb(189 178 232 / 16%), transparent 24rem),
-    radial-gradient(circle at 55% 85%, rgb(145 216 196 / 14%), transparent 20rem),
-    var(--paper);
+    radial-gradient(ellipse at 50% 0%, rgb(214 179 106 / 10%), transparent 34rem),
+    #0b0b0a;
   color: var(--ink);
   font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   line-height: 1.8;
@@ -31,42 +33,40 @@ body {
 
 .site-header {
   position: relative;
+  display: grid;
+  min-height: 390px;
+  place-items: center;
   overflow: hidden;
-  padding: clamp(3.5rem, 9vw, 7rem) 1.5rem;
+  padding: 5rem 1.5rem;
+  border-bottom: 1px solid var(--line);
   background:
-    linear-gradient(120deg, rgb(255 255 255 / 18%), transparent 50%),
-    linear-gradient(120deg, #a9d7ed 0%, #bdb2e8 55%, #f5a7b8 100%);
-  color: #fff;
+    linear-gradient(180deg, rgb(10 10 9 / 35%), rgb(10 10 9 / 82%)),
+    radial-gradient(ellipse at center, #393020 0%, #171511 48%, #0b0b0a 100%);
+  text-align: center;
 }
 
-.site-header::before {
+.site-header::before,
+.site-header::after {
   position: absolute;
-  top: -7rem;
-  left: -4rem;
-  width: 18rem;
-  height: 18rem;
-  border: 2px dashed rgb(255 255 255 / 28%);
+  top: 50%;
+  left: 50%;
+  width: min(74vw, 680px);
+  aspect-ratio: 1;
+  border: 1px solid rgb(214 179 106 / 12%);
   border-radius: 50%;
   content: "";
+  pointer-events: none;
+  transform: translate(-50%, -50%);
 }
 
 .site-header::after {
-  position: absolute;
-  right: -5rem;
-  bottom: -12rem;
-  width: 28rem;
-  height: 28rem;
-  border: 2px dotted rgb(255 255 255 / 35%);
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 2.5rem rgb(255 255 255 / 8%),
-    0 0 0 5rem rgb(255 255 255 / 5%);
-  content: "";
+  width: min(58vw, 530px);
+  border-color: rgb(214 179 106 / 9%);
 }
 
 .header-inner,
 .page-content {
-  width: min(100% - 2.5rem, 960px);
+  width: min(var(--page-width), calc(100% - 3rem));
   margin-inline: auto;
 }
 
@@ -77,69 +77,71 @@ body {
 
 .eyebrow,
 .section-label {
-  margin: 0 0 0.6rem;
+  margin: 0 0 0.75rem;
+  color: var(--gold);
   font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-weight: 600;
+  letter-spacing: 0.2em;
 }
 
 .eyebrow {
-  color: #fff;
-  text-shadow: 0 2px 10px rgb(102 86 109 / 12%);
+  color: var(--gold-light);
+}
+
+.site-header h1,
+h2 {
+  font-family: "Noto Serif JP", "Yu Mincho", "Hiragino Mincho ProN", serif;
 }
 
 .site-header h1 {
   margin: 0;
-  color: #fff;
+  color: var(--gold-light);
   font-size: clamp(2.4rem, 7vw, 4.5rem);
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  line-height: 1.25;
-  text-shadow: 0 4px 18px rgb(102 86 109 / 10%);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  line-height: 1.35;
+  text-shadow: 0 4px 24px rgb(0 0 0 / 55%);
 }
 
 .header-copy {
-  margin: 1rem 0 0;
-  color: rgb(255 255 255 / 95%);
-  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  margin: 1.25rem 0 0;
+  color: #e4dfd3;
+  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  letter-spacing: 0.06em;
 }
 
 .page-content {
-  padding-block: 3.5rem 5rem;
+  padding-block: 4rem 5rem;
 }
 
 .section-card {
   position: relative;
   overflow: hidden;
-  padding: clamp(1.5rem, 5vw, 2.75rem);
-  border: 2px solid #f3dfe7;
-  border-radius: 2rem;
-  background: rgb(255 255 255 / 94%);
-  box-shadow:
-    0 18px 45px rgb(189 178 232 / 14%),
-    0 4px 12px rgb(245 167 184 / 8%);
+  padding: clamp(1.75rem, 5vw, 3.25rem);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: linear-gradient(145deg, rgb(255 255 255 / 3%), transparent 60%), var(--surface);
+  box-shadow: 0 18px 55px rgb(0 0 0 / 30%);
+  text-align: center;
+}
+
+.section-card::before,
+.section-card::after {
+  position: absolute;
+  left: 50%;
+  width: 3.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  content: "";
+  transform: translateX(-50%);
 }
 
 .section-card::before {
-  position: absolute;
   top: 0;
-  bottom: 0;
-  left: 0;
-  width: 0.45rem;
-  border-radius: 999px;
-  background: linear-gradient(180deg, var(--pink), var(--lavender), var(--mint));
-  content: "";
 }
 
 .section-card::after {
-  position: absolute;
-  right: -3.5rem;
-  bottom: -5.5rem;
-  width: 11rem;
-  height: 11rem;
-  border: 1.5rem solid rgb(255 201 169 / 12%);
-  border-radius: 50%;
-  content: "";
+  bottom: 0;
 }
 
 .section-card > * {
@@ -147,25 +149,24 @@ body {
   z-index: 1;
 }
 
-.section-label {
-  color: #c77c98;
-}
-
 h2 {
   margin: 0;
-  color: #77627e;
-  font-size: clamp(1.45rem, 3vw, 1.9rem);
-  line-height: 1.4;
+  color: var(--gold-light);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.45;
 }
 
 .intro > p:last-child {
   max-width: 760px;
-  margin: 1rem 0 0;
-  color: var(--muted);
+  margin: 1.25rem auto 0;
+  color: #d2ccc0;
+  text-align: left;
 }
 
 .courses {
-  margin-top: 3.5rem;
+  margin-top: 4.5rem;
 }
 
 .section-heading {
@@ -173,11 +174,13 @@ h2 {
   align-items: end;
   justify-content: space-between;
   gap: 1rem;
-  margin-bottom: 1.4rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
 }
 
 .section-note {
-  margin: 0 0 0.2rem;
+  margin: 0 0 0.25rem;
   color: var(--muted);
   font-size: 0.9rem;
 }
@@ -193,106 +196,103 @@ h2 {
 
 .course-list li {
   position: relative;
-  min-height: 5rem;
   display: flex;
+  min-height: 5rem;
   align-items: center;
-  padding: 1.15rem 1.25rem 1.15rem 3.5rem;
-  border: 2px solid #f1e2ea;
-  border-radius: 1.35rem;
-  background: linear-gradient(135deg, #fff 0%, #fffafd 100%);
-  box-shadow:
-    0 8px 24px rgb(189 178 232 / 10%),
-    0 2px 6px rgb(245 167 184 / 7%);
-  font-weight: 600;
-  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
-}
-
-.course-list li:nth-child(4n + 1) {
-  border-color: #ecdff7;
-}
-
-.course-list li:nth-child(4n + 2) {
-  border-color: #d9eee7;
-}
-
-.course-list li:nth-child(4n + 3) {
-  border-color: #f4dfc8;
-}
-
-.course-list li:nth-child(4n + 4) {
-  border-color: #dcecf5;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  background: linear-gradient(135deg, rgb(214 179 106 / 5%), transparent 75%), var(--surface-raised);
+  color: #eee8db;
+  font-weight: 500;
+  text-align: center;
+  transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
 }
 
 .course-list li::before {
-  position: absolute;
-  left: 1.25rem;
-  width: 0.9rem;
-  height: 0.9rem;
-  border: 3px solid rgb(255 255 255 / 85%);
+  width: 0.35rem;
+  height: 0.35rem;
+  flex: 0 0 auto;
+  margin-right: 0.8rem;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--pink), var(--lavender));
-  box-shadow: 0 3px 8px rgb(189 178 232 / 25%);
+  background: var(--gold);
+  box-shadow: 0 0 12px rgb(214 179 106 / 45%);
   content: "";
 }
 
-.course-list li:nth-child(4n + 2)::before {
-  background: linear-gradient(135deg, var(--mint), var(--sky));
-}
-
-.course-list li:nth-child(4n + 3)::before {
-  background: linear-gradient(135deg, var(--peach), var(--pink));
-}
-
-.course-list li:nth-child(4n + 4)::before {
-  background: linear-gradient(135deg, var(--sky), var(--lavender));
-}
-
 .course-list li:hover {
-  transform: translateY(-4px) rotate(-0.3deg);
-  border-color: #d5bfe2;
-  box-shadow:
-    0 14px 30px rgb(189 178 232 / 13%),
-    0 4px 8px rgb(245 167 184 / 8%);
+  transform: translateY(-2px);
+  border-color: rgb(214 179 106 / 65%);
+  background-color: #24221d;
 }
 
 .site-footer {
   padding: 1.5rem;
-  border-top: 2px dashed #eedde7;
-  background: rgb(255 255 255 / 75%);
+  border-top: 1px solid var(--line);
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.12em;
   text-align: center;
 }
 
 @media (max-width: 600px) {
+  .site-header {
+    min-height: 330px;
+    padding: 4rem 1rem;
+  }
+
+  .eyebrow {
+    font-size: 0.61rem;
+    letter-spacing: 0.12em;
+  }
+
   .header-inner,
   .page-content {
-    width: min(100% - 2rem, 960px);
+    width: min(100% - 2rem, var(--page-width));
   }
 
   .page-content {
     padding-block: 2rem 3rem;
   }
 
+  .section-card {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .intro > p:last-child {
+    font-size: 0.94rem;
+  }
+
+  .courses {
+    margin-top: 3rem;
+  }
+
   .section-heading {
-    align-items: start;
+    align-items: center;
     flex-direction: column;
+    text-align: center;
   }
 
   .course-list {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 
   .course-list li {
-    min-height: 4.5rem;
+    min-height: 4.25rem;
+    padding-inline: 1rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
-    scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
 }
