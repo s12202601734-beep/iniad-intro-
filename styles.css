@@ -7,8 +7,8 @@
   --teal: #28a6a1;
   --ink: #203449;
   --muted: #64788b;
-  --paper: #f3f7fa;
-  --line: #e2ebf0;
+  --paper: #edf3f6;
+  --line: #dfe8ed;
 }
 
 * {
@@ -17,7 +17,9 @@
 
 body {
   margin: 0;
-  background: var(--paper);
+  background:
+    radial-gradient(circle at 10% 20%, rgb(23 107 135 / 6%), transparent 25rem),
+    var(--paper);
   color: var(--ink);
   font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
   line-height: 1.8;
@@ -29,6 +31,17 @@ body {
   padding: clamp(3.5rem, 9vw, 7rem) 1.5rem;
   background: linear-gradient(120deg, #102a43 0%, #176b87 65%, #28a6a1 100%);
   color: #fff;
+}
+
+.site-header::before {
+  position: absolute;
+  top: -8rem;
+  left: -5rem;
+  width: 18rem;
+  height: 18rem;
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: 50%;
+  content: "";
 }
 
 .site-header::after {
@@ -85,11 +98,39 @@ body {
 }
 
 .section-card {
+  position: relative;
+  overflow: hidden;
   padding: clamp(1.5rem, 5vw, 2.75rem);
-  border: 1px solid var(--line);
-  border-radius: 1rem;
-  background: #fff;
-  box-shadow: 0 12px 32px rgb(16 42 67 / 6%);
+  border: 1px solid rgb(223 232 237 / 90%);
+  border-radius: 1.25rem;
+  background: rgb(255 255 255 / 96%);
+  box-shadow: 0 18px 45px rgb(16 42 67 / 9%), 0 2px 8px rgb(16 42 67 / 4%);
+}
+
+.section-card::before {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 0.35rem;
+  background: linear-gradient(180deg, var(--blue), var(--teal));
+  content: "";
+}
+
+.section-card::after {
+  position: absolute;
+  right: -3.5rem;
+  bottom: -5.5rem;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background: rgb(40 166 161 / 6%);
+  content: "";
+}
+
+.section-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .section-label {
@@ -130,7 +171,7 @@ h2 {
 .course-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.85rem;
+  gap: 1rem;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -138,37 +179,41 @@ h2 {
 
 .course-list li {
   position: relative;
-  min-height: 4.5rem;
+  min-height: 5rem;
   display: flex;
   align-items: center;
-  padding: 1rem 1.25rem 1rem 3.1rem;
-  border: 1px solid var(--line);
-  border-radius: 0.75rem;
-  background: #fff;
+  padding: 1.15rem 1.25rem 1.15rem 3.5rem;
+  border: 1px solid rgb(223 232 237 / 95%);
+  border-radius: 1rem;
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 100%), rgb(248 251 252 / 100%));
+  box-shadow: 0 8px 24px rgb(16 42 67 / 6%), 0 1px 3px rgb(16 42 67 / 5%);
   font-weight: 600;
-  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
 .course-list li::before {
   position: absolute;
   left: 1.25rem;
-  width: 0.75rem;
-  height: 0.75rem;
-  border-radius: 0.2rem;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 0.25rem;
   background: linear-gradient(135deg, var(--blue), var(--teal));
+  box-shadow: 0 3px 8px rgb(40 166 161 / 25%);
   content: "";
   transform: rotate(45deg);
 }
 
 .course-list li:hover {
-  transform: translateY(-2px);
-  border-color: #9dcfd0;
-  box-shadow: 0 8px 20px rgb(16 42 67 / 8%);
+  transform: translateY(-4px);
+  border-color: #92caca;
+  box-shadow: 0 14px 30px rgb(16 42 67 / 11%), 0 2px 5px rgb(16 42 67 / 6%);
 }
 
 .site-footer {
   padding: 1.5rem;
   border-top: 1px solid var(--line);
+  background: rgb(255 255 255 / 55%);
   color: var(--muted);
   font-size: 0.85rem;
   text-align: center;
@@ -191,6 +236,10 @@ h2 {
 
   .course-list {
     grid-template-columns: 1fr;
+  }
+
+  .course-list li {
+    min-height: 4.5rem;
   }
 }
 
